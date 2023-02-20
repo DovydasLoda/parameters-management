@@ -18,7 +18,7 @@ import com.somesystem.exceptions.AlreadyExistsException;
 import com.somesystem.exceptions.NotFoundException;
 import com.somesystem.service.ParameterService;
 
-@CrossOrigin(origins = "http://localhost:8082")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ParameterController {
@@ -40,7 +40,7 @@ public class ParameterController {
     }
 
     @PutMapping("/parameters/{id}")
-    public ResponseEntity<Parameter> updateTutorial(@PathVariable("id") long id, @RequestBody Parameter newParam) throws NotFoundException {
+    public ResponseEntity<Parameter> updateParameterValue(@PathVariable("id") long id, @RequestBody Parameter newParam) throws NotFoundException {
         Parameter param = paramService.getById(id)
                 .orElseThrow(() -> new NotFoundException("Parameter not found with id = " + id));
 
